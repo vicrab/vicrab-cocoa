@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: is_ci" time="0.010354">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: cd ..; xcodebuild clean build -project Sentry.xcodeproj -scheme Sentry -configuration Debug | tee xcodebuild.log; oclint-xcodebuild -output compile_commands.json xcodebuild.log" time="0.769324">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: oclint" time="7.483948">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

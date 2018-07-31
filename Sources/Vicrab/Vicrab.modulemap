@@ -1,0 +1,30 @@
+framework module Vicrab {
+    umbrella header "Vicrab.h"
+
+    export *
+    module * { export * }
+
+    explicit module Private {
+        header "VicrabDsn.h"
+        header "VicrabClient+Internal.h"
+        header "VicrabError.h"
+        header "VicrabAsynchronousOperation.h"
+        header "VicrabRequestOperation.h"
+        header "VicrabQueueableRequestManager.h"
+        header "VicrabInstallation.h"
+        header "VicrabCrashReportSink.h"
+        header "VicrabCrashReportConverter.h"
+        header "VicrabLog.h"
+        header "VicrabBreadcrumbTracker.h"
+        header "VicrabCrashExceptionApplication.h"
+
+        header "NSData+Compression.h"
+        header "NSDate+Extras.h"
+        header "NSDictionary+Sanitize.h"
+
+        header "VicrabCrashInstallation+Private.h"
+        header "VicrabCrashReportWriter.h"
+        header "VicrabCrashReportFilter.h"
+        header "VicrabCrashMonitorType.h"
+    }
+}
