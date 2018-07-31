@@ -1,7 +1,7 @@
 <p align="center">
-    <a href="https://vicrab.io" target="_blank" align="center">
+   <!-- <a href="https://vicrab.io" target="_blank" align="center">
         <img src="https://vicrab-brand.storage.googleapis.com/vicrab-logo-black.png" width="280">
-    </a>
+    </a> -->
 <br/>
     <h1>Official Vicrab SDK for iOS/macOS/tvOS/watchOS<sup>(1)</sup>.</h1>
 </p>
