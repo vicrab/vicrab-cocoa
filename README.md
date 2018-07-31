@@ -5,15 +5,15 @@
 <br/>
     <h1>Official Vicrab SDK for iOS/macOS/tvOS/watchOS<sup>(1)</sup>.</h1>
 </p>
-
+<!--
 [![Travis](https://img.shields.io/travis/getvicrab/vicrab-cocoa.svg?maxAge=2592000)](https://travis-ci.org/getvicrab/vicrab-cocoa)
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20tvOS%20%7C%20OSX-333333.svg)
 ![langauges](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-333333.svg)
-[![CocoaPods Shield](https://img.shields.io/cocoapods/v/Vicrab.svg)](https://cocoapods.org/pods/Sentry)
+[![CocoaPods Shield](https://img.shields.io/cocoapods/v/Vicrab.svg)](https://cocoapods.org/pods/Vicrab)
 [![CocoaPods Shield](https://img.shields.io/cocoapods/dt/Vicrab.svg)](https://cocoapods.org/pods/Vicrab)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![codecov](https://codecov.io/gh/getvicrab/vicrab-cocoa/branch/master/graph/badge.svg)](https://codecov.io/gh/getvicrab/vicrab-cocoa)
-
+-->
 This SDK is written in Objective-C but also works for Swift projects.
 
 ```swift
