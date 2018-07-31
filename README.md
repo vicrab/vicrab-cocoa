@@ -34,9 +34,9 @@ func application(application: UIApplication,
     return true
 }
 ```
-
+<!--
 - [Installation](https://docs.vicrab.io/clients/cocoa/#installation)
 - [Documentation](https://docs.vicrab.io/clients/cocoa/)
-
+-->
 <sup>(1)</sup>limited symbolication support
 # vicrab-cocoa
