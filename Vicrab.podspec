@@ -2,11 +2,11 @@ Pod::Spec.new do |s|
   s.name         = "Vicrab"
   s.version      = "0.0.4"
   s.summary      = "Vicrab client for cocoa"
-  s.homepage     = "https://github.com/vicrab/vicrab-cocoa.git"
-  s.license      = "mit"
-  s.author       = { "Vicrab" => "do_not_reply@vicrab.com" }
+  s.homepage     = "https://github.com/vicrab/vicrab-cocoa"
+  s.license      = "MIT"
+  s.author       = { "Vicrab" => "developer@vicrab.com" }
   s.authors      = "Vicrab"
-  s.source       = { :git => "https://github.com/vicrab/vicrab-cocoa.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/vicrab/vicrab-cocoa.git", :tag => "0.0.4" }
 
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
