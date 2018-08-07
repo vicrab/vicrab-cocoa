@@ -24,7 +24,7 @@
 #import "VicrabBreadcrumbStore.h"
 #endif
 
-#if SENTRY_HAS_UIKIT
+#if VICRAB_HAS_UIKIT
 #import <UIKit/UIKit.h>
 #endif
 
@@ -47,7 +47,7 @@
 }
 
 - (void)swizzleSendAction {
-#if SENTRY_HAS_UIKIT
+#if VICRAB_HAS_UIKIT
     static const void *swizzleSendActionKey = &swizzleSendActionKey;
     //    - (BOOL)sendAction:(SEL)action to:(nullable id)target from:(nullable id)sender forEvent:(nullable UIEvent *)event;
     SEL selector = NSSelectorFromString(@"sendAction:to:from:forEvent:");
@@ -75,7 +75,7 @@
 }
 
 - (void)swizzleViewDidAppear {
-#if SENTRY_HAS_UIKIT
+#if VICRAB_HAS_UIKIT
     static const void *swizzleViewDidAppearKey = &swizzleViewDidAppearKey;
     SEL selector = NSSelectorFromString(@"viewDidAppear:");
     VicrabSwizzleInstanceMethod(UIViewController.class,

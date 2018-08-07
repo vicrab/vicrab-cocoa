@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_SWIFT_NAME(Breadcrumb)
 @interface VicrabBreadcrumb : NSObject <VicrabSerializable>
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 /**
  * Level of breadcrumb

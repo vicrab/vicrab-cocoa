@@ -38,7 +38,7 @@
 @implementation VicrabCrashReportSink
 
 - (void)handleConvertedEvent:(VicrabEvent *)event report:(NSDictionary *)report sentReports:(NSMutableArray *)sentReports {
-    if (nil != event.exceptions.firstObject && [event.exceptions.firstObject.value isEqualToString:@"SENTRY_SNAPSHOT"]) {
+    if (nil != event.exceptions.firstObject && [event.exceptions.firstObject.value isEqualToString:@"VICRAB_SNAPSHOT"]) {
         [VicrabLog logWithMessage:@"Snapshotting stacktrace" andLevel:kVicrabLogLevelDebug];
         VicrabClient.sharedClient._snapshotThreads = @[event.exceptions.firstObject.thread];
         VicrabClient.sharedClient._debugMeta = event.debugMeta;

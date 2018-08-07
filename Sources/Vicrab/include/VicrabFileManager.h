@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class VicrabEvent, VicrabBreadcrumb, VicrabDsn;
 
 @interface VicrabFileManager : NSObject
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 - (_Nullable instancetype)initWithDsn:(VicrabDsn *)dsn didFailWithError:(NSError **)error;
 

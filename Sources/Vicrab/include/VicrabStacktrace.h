@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_SWIFT_NAME(Stacktrace)
 @interface VicrabStacktrace : NSObject <VicrabSerializable>
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 /**
  * Array of all VicrabFrame in the stacktrace

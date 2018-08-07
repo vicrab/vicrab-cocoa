@@ -328,7 +328,6 @@
 		63FE714C20DA4C1100CDBAE8 /* VicrabCrashString.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702C20DA4C1000CDBAE8 /* VicrabCrashString.h */; };
 		63FE714D20DA4C1100CDBAE8 /* VicrabCrashJSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702D20DA4C1000CDBAE8 /* VicrabCrashJSONCodec.h */; };
 		63FE714E20DA4C1100CDBAE8 /* VicrabCrashJSONCodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702D20DA4C1000CDBAE8 /* VicrabCrashJSONCodec.h */; };
-		63FE715020DA4C1100CDBAE8 /* NSError+SimpleConstructor.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702E20DA4C1000CDBAE8 /* NSError+SimpleConstructor.h */; };
 		63FE715120DA4C1100CDBAE8 /* VicrabCrashDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702F20DA4C1000CDBAE8 /* VicrabCrashDebug.h */; };
 		63FE715220DA4C1100CDBAE8 /* VicrabCrashDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702F20DA4C1000CDBAE8 /* VicrabCrashDebug.h */; };
 		63FE715420DA4C1100CDBAE8 /* VicrabCrashObjCApple.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE703020DA4C1000CDBAE8 /* VicrabCrashObjCApple.h */; };
@@ -422,16 +421,19 @@
 		63FE722320DA66EC00CDBAE8 /* VicrabCrashMonitor_Deadlock_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FE71FA20DA66EB00CDBAE8 /* VicrabCrashMonitor_Deadlock_Tests.m */; };
 		63FE722420DA66EC00CDBAE8 /* VicrabCrashMonitor_NSException_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FE71FB20DA66EB00CDBAE8 /* VicrabCrashMonitor_NSException_Tests.m */; };
 		63FE722520DA66EC00CDBAE8 /* VicrabCrashFileUtils_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FE71FC20DA66EB00CDBAE8 /* VicrabCrashFileUtils_Tests.m */; };
-		C56C0C402119734D00742059 /* VicrabDsn.h in Headers */ = {isa = PBXBuildFile; fileRef = 63AA76A41EB9CBC200D153DE /* VicrabDsn.h */; };
-		C56C0C412119738C00742059 /* VicrabError.h in Headers */ = {isa = PBXBuildFile; fileRef = 63AA769B1EB9C57A00D153DE /* VicrabError.h */; };
-		C56C0C42211973AF00742059 /* VicrabEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 639FCF961EBC7B9700778193 /* VicrabEvent.h */; };
-		C56C0C43211973CF00742059 /* VicrabDebugMeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 63B818F71EC34639002FDF4C /* VicrabDebugMeta.h */; };
+		C56C0C402119734D00742059 /* VicrabDsn.h in Headers */ = {isa = PBXBuildFile; fileRef = 63AA76A41EB9CBC200D153DE /* VicrabDsn.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C56C0C412119738C00742059 /* VicrabError.h in Headers */ = {isa = PBXBuildFile; fileRef = 63AA769B1EB9C57A00D153DE /* VicrabError.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C56C0C42211973AF00742059 /* VicrabEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 639FCF961EBC7B9700778193 /* VicrabEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C56C0C43211973CF00742059 /* VicrabDebugMeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 63B818F71EC34639002FDF4C /* VicrabDebugMeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C56C0C442119740400742059 /* VicrabMechanism.m in Headers */ = {isa = PBXBuildFile; fileRef = 6334314020AD9AE40077E581 /* VicrabMechanism.m */; };
-		C56C0C452119742600742059 /* VicrabInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6344DDAE1EC308E400D9160D /* VicrabInstallation.h */; };
-		C56C0C462119747200742059 /* VicrabCrash.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE704B20DA4C1000CDBAE8 /* VicrabCrash.h */; };
-		C56C0C472119749E00742059 /* VicrabBreadcrumb.h in Headers */ = {isa = PBXBuildFile; fileRef = 6360850B1ED2AFE100E8599E /* VicrabBreadcrumb.h */; };
-		C56C0C48211974B400742059 /* VicrabFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 636085111ED47BE600E8599E /* VicrabFileManager.h */; };
-		C56C0C49211974DA00742059 /* VicrabCrashReportConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6344DDB71EC3115C00D9160D /* VicrabCrashReportConverter.h */; };
+		C56C0C452119742600742059 /* VicrabInstallation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6344DDAE1EC308E400D9160D /* VicrabInstallation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C56C0C462119747200742059 /* VicrabCrash.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE704B20DA4C1000CDBAE8 /* VicrabCrash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C56C0C472119749E00742059 /* VicrabBreadcrumb.h in Headers */ = {isa = PBXBuildFile; fileRef = 6360850B1ED2AFE100E8599E /* VicrabBreadcrumb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C56C0C48211974B400742059 /* VicrabFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 636085111ED47BE600E8599E /* VicrabFileManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C56C0C49211974DA00742059 /* VicrabCrashReportConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6344DDB71EC3115C00D9160D /* VicrabCrashReportConverter.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C56C0C4A21197D5000742059 /* NSError+SimpleConstructor.m in Headers */ = {isa = PBXBuildFile; fileRef = 63FE700E20DA4C1000CDBAE8 /* NSError+SimpleConstructor.m */; };
+		C56C0C4B21197E0300742059 /* VicrabCrashString.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE702C20DA4C1000CDBAE8 /* VicrabCrashString.h */; };
+		C56C0C4C21197E3D00742059 /* VicrabCrashObjCApple.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FE703020DA4C1000CDBAE8 /* VicrabCrashObjCApple.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -648,7 +650,6 @@
 		63FE702B20DA4C1000CDBAE8 /* VicrabCrashStackCursor_Backtrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VicrabCrashStackCursor_Backtrace.h; sourceTree = "<group>"; };
 		63FE702C20DA4C1000CDBAE8 /* VicrabCrashString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VicrabCrashString.h; sourceTree = "<group>"; };
 		63FE702D20DA4C1000CDBAE8 /* VicrabCrashJSONCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VicrabCrashJSONCodec.h; sourceTree = "<group>"; };
-		63FE702E20DA4C1000CDBAE8 /* NSError+SimpleConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SimpleConstructor.h"; sourceTree = "<group>"; };
 		63FE702F20DA4C1000CDBAE8 /* VicrabCrashDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VicrabCrashDebug.h; sourceTree = "<group>"; };
 		63FE703020DA4C1000CDBAE8 /* VicrabCrashObjCApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VicrabCrashObjCApple.h; sourceTree = "<group>"; };
 		63FE703120DA4C1000CDBAE8 /* VicrabCrashStackCursor_MachineContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VicrabCrashStackCursor_MachineContext.h; sourceTree = "<group>"; };
@@ -715,7 +716,6 @@
 		63FE71FB20DA66EB00CDBAE8 /* VicrabCrashMonitor_NSException_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VicrabCrashMonitor_NSException_Tests.m; sourceTree = "<group>"; };
 		63FE71FC20DA66EB00CDBAE8 /* VicrabCrashFileUtils_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VicrabCrashFileUtils_Tests.m; sourceTree = "<group>"; };
 		C56C0C3D21196A1100742059 /* NSError+SimpleConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SimpleConstructor.h"; sourceTree = "<group>"; };
-		C5FF3F6021103A8900D409B8 /* Vicrab.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = Vicrab.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -820,7 +820,6 @@
 				63AA75921EB8AEDB00D153DE /* Tests */,
 				6327C5D41EB8A783004E799B /* Products */,
 				6304360C1EC05CEF00C4D3FA /* Frameworks */,
-				C56C0C3F2119723000742059 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -922,7 +921,6 @@
 		63AA75C61EB8B06100D153DE /* Vicrab */ = {
 			isa = PBXGroup;
 			children = (
-				C5FF3F6021103A8900D409B8 /* Vicrab.modulemap */,
 				63AA769F1EB9C89800D153DE /* Supporting Files */,
 				630436011EBCB8CA00C4D3FA /* Interfaces */,
 				630436001EBCB87500C4D3FA /* Networking */,
@@ -1168,14 +1166,6 @@
 			path = VicrabCrash;
 			sourceTree = "<group>";
 		};
-		C56C0C3F2119723000742059 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				63FE702E20DA4C1000CDBAE8 /* NSError+SimpleConstructor.h */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1259,7 +1249,6 @@
 				6387B82B1ED851190045A84C /* VicrabCrashReportConverter.h in Headers */,
 				6387B8231ED850E60045A84C /* NSData+Compression.h in Headers */,
 				63FE717820DA4C1100CDBAE8 /* VicrabCrashReportWriter.h in Headers */,
-				63FE715020DA4C1100CDBAE8 /* NSError+SimpleConstructor.h in Headers */,
 				63FE714C20DA4C1100CDBAE8 /* VicrabCrashString.h in Headers */,
 				63FE715420DA4C1100CDBAE8 /* VicrabCrashObjCApple.h in Headers */,
 				63FE70F220DA4C1000CDBAE8 /* VicrabCrashMonitorType.h in Headers */,
@@ -1291,6 +1280,7 @@
 				63FE716520DA4C1100CDBAE8 /* VicrabCrashMemory.h in Headers */,
 				63FE713F20DA4C1100CDBAE8 /* VicrabCrashStackCursor_SelfThread.h in Headers */,
 				63D50BC91EE049B1008902A3 /* VicrabClient+Internal.h in Headers */,
+				C56C0C462119747200742059 /* VicrabCrash.h in Headers */,
 				639FCFA41EBC809A00778193 /* VicrabStacktrace.h in Headers */,
 				63FE716320DA4C1100CDBAE8 /* VicrabCrashDynamicLinker.h in Headers */,
 				63FE715D20DA4C1100CDBAE8 /* VicrabCrashSymbolicator.h in Headers */,
@@ -1299,6 +1289,9 @@
 				63FE714D20DA4C1100CDBAE8 /* VicrabCrashJSONCodec.h in Headers */,
 				63FE717F20DA4C1100CDBAE8 /* VicrabCrashReportFields.h in Headers */,
 				63FE70D120DA4C1000CDBAE8 /* VicrabCrashMonitorContext.h in Headers */,
+				C56C0C42211973AF00742059 /* VicrabEvent.h in Headers */,
+				C56C0C472119749E00742059 /* VicrabBreadcrumb.h in Headers */,
+				C56C0C43211973CF00742059 /* VicrabDebugMeta.h in Headers */,
 				63295AF51EF3C7DB002D4490 /* NSDictionary+Sanitize.h in Headers */,
 				63FE717920DA4C1100CDBAE8 /* VicrabCrashReportStore.h in Headers */,
 				63FE714920DA4C1100CDBAE8 /* VicrabCrashStackCursor_Backtrace.h in Headers */,
@@ -1310,17 +1303,16 @@
 				630436101EC0600A00C4D3FA /* VicrabSerializable.h in Headers */,
 				63FE70DD20DA4C1000CDBAE8 /* VicrabCrashMonitor_Signal.h in Headers */,
 				63FE710320DA4C1000CDBAE8 /* VicrabCrashMachineContext_Apple.h in Headers */,
-				63AA76981EB9C1C200D153DE /* VicrabClient.h in Headers */,
-				C56C0C49211974DA00742059 /* VicrabCrashReportConverter.h in Headers */,
-				C56C0C48211974B400742059 /* VicrabFileManager.h in Headers */,
-				C56C0C472119749E00742059 /* VicrabBreadcrumb.h in Headers */,
-				C56C0C462119747200742059 /* VicrabCrash.h in Headers */,
 				C56C0C452119742600742059 /* VicrabInstallation.h in Headers */,
-				C56C0C442119740400742059 /* VicrabMechanism.m in Headers */,
-				C56C0C43211973CF00742059 /* VicrabDebugMeta.h in Headers */,
-				C56C0C42211973AF00742059 /* VicrabEvent.h in Headers */,
 				C56C0C412119738C00742059 /* VicrabError.h in Headers */,
+				C56C0C48211974B400742059 /* VicrabFileManager.h in Headers */,
 				C56C0C402119734D00742059 /* VicrabDsn.h in Headers */,
+				C56C0C49211974DA00742059 /* VicrabCrashReportConverter.h in Headers */,
+				63AA76981EB9C1C200D153DE /* VicrabClient.h in Headers */,
+				C56C0C4C21197E3D00742059 /* VicrabCrashObjCApple.h in Headers */,
+				C56C0C4B21197E0300742059 /* VicrabCrashString.h in Headers */,
+				C56C0C4A21197D5000742059 /* NSError+SimpleConstructor.m in Headers */,
+				C56C0C442119740400742059 /* VicrabMechanism.m in Headers */,
 				63AA76971EB9C1C200D153DE /* Vicrab.h in Headers */,
 				63FE711F20DA4C1000CDBAE8 /* VicrabCrashObjC.h in Headers */,
 				631E6D331EBC679C00712345 /* VicrabQueueableRequestManager.h in Headers */,

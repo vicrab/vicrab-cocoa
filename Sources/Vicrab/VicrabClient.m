@@ -399,8 +399,8 @@ withCompletionHandler:(_Nullable VicrabRequestOperationFinished)completionHandle
         [VicrabLog logWithMessage:@"VicrabCrash has not been initialized, call startCrashHandlerWithError" andLevel:kVicrabLogLevelError];
         return;
     }
-    [VicrabCrash.sharedInstance reportUserException:@"SENTRY_SNAPSHOT"
-                                         reason:@"SENTRY_SNAPSHOT"
+    [VicrabCrash.sharedInstance reportUserException:@"VICRAB_SNAPSHOT"
+                                         reason:@"VICRAB_SNAPSHOT"
                                        language:@""
                                      lineOfCode:@""
                                      stackTrace:[[NSArray alloc] init]

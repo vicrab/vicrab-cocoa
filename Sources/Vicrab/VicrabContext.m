@@ -20,7 +20,7 @@
 #import "VicrabCrash.h"
 #endif
 
-#if SENTRY_HAS_UIKIT
+#if VICRAB_HAS_UIKIT
 #import <UIKit/UIKit.h>
 #endif
 
@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
     [serializedData setValue:@"watchOS" forKey:@"name"];
 #endif
 
-#if SENTRY_HAS_UIDEVICE
+#if VICRAB_HAS_UIDEVICE
     [serializedData setValue:[UIDevice currentDevice].systemVersion forKey:@"version"];
 #else
     NSOperatingSystemVersion version = [NSProcessInfo processInfo].operatingSystemVersion;

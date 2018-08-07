@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_SWIFT_NAME(Mechanism)
 @interface VicrabMechanism : NSObject <VicrabSerializable>
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 /**
  * A unique identifier of this mechanism determining rendering and processing

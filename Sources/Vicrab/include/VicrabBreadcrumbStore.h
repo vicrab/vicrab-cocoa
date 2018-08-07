@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_SWIFT_NAME(BreadcrumbStore)
 @interface VicrabBreadcrumbStore : NSObject <VicrabSerializable>
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 /*
  * This property defines how many breadcrumbs should be stored.

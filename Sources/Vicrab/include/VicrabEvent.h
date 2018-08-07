@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_SWIFT_NAME(Event)
 @interface VicrabEvent : NSObject <VicrabSerializable>
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 /**
  * This will be set by the initializer. Should be an UUID with the "-".

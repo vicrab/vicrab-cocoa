@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class VicrabEvent, VicrabUser, VicrabFrame, VicrabBreadcrumb;
 
 @interface VicrabJavaScriptBridgeHelper : NSObject
-SENTRY_NO_INIT
+VICRAB_NO_INIT
 
 + (VicrabEvent *)createVicrabEventFromJavaScriptEvent:(NSDictionary *)jsonEvent;
 + (VicrabBreadcrumb *)createVicrabBreadcrumbFromJavaScriptBreadcrumb:(NSDictionary *)jsonBreadcrumb;

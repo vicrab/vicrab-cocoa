@@ -9,24 +9,24 @@
 #import <Foundation/Foundation.h>
 
 #ifdef __cplusplus
-#define SENTRY_EXTERN        extern "C" __attribute__((visibility ("default")))
+#define VICRAB_EXTERN        extern "C" __attribute__((visibility ("default")))
 #else
-#define SENTRY_EXTERN        extern __attribute__((visibility ("default")))
+#define VICRAB_EXTERN        extern __attribute__((visibility ("default")))
 #endif
 
 #if TARGET_OS_IOS || TARGET_OS_TV
-#define SENTRY_HAS_UIDEVICE 1
+#define VICRABY_HAS_UIDEVICE 1
 #else
-#define SENTRY_HAS_UIDEVICE 0
+#define VICRAB_HAS_UIDEVICE 0
 #endif
 
-#if SENTRY_HAS_UIDEVICE
-#define SENTRY_HAS_UIKIT 1
+#if VICRAB_HAS_UIDEVICE
+#define VICRAB_HAS_UIKIT 1
 #else
-#define SENTRY_HAS_UIKIT 0
+#define VICRAB_HAS_UIKIT 0
 #endif
 
-#define SENTRY_NO_INIT \
+#define VICRAB_NO_INIT \
 - (instancetype)init NS_UNAVAILABLE; \
 + (instancetype)new NS_UNAVAILABLE;
 

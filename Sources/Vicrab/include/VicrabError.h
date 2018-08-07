@@ -30,8 +30,8 @@ typedef NS_ENUM(NSInteger, VicrabError) {
     kVicrabErrorEventNotSent = 107,
 };
 
-SENTRY_EXTERN NSError *_Nullable NSErrorFromVicrabError(VicrabError error, NSString *description);
+VICRAB_EXTERN NSError *_Nullable NSErrorFromVicrabError(VicrabError error, NSString *description);
 
-SENTRY_EXTERN NSString *const VicrabErrorDomain;
+VICRAB_EXTERN NSString *const VicrabErrorDomain;
 
 NS_ASSUME_NONNULL_END

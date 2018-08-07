@@ -21,7 +21,6 @@ framework module Vicrab {
         header "NSData+Compression.h"
         header "NSDate+Extras.h"
         header "NSDictionary+Sanitize.h"
-        header "NSError+SimpleConstructor.h"
 
         header "VicrabCrashInstallation+Private.h"
         header "VicrabCrashReportWriter.h"
