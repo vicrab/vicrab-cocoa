@@ -76,7 +76,7 @@ NSTimeInterval const VicrabRequestTimeout = 15;
         [self setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [self setValue:@"vicrab-cocoa" forHTTPHeaderField:@"User-Agent"];
         [self setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
-        self.HTTPBody = [data vicrab_gzippedWithCompressionLevel:-1 error:error];
+        self.HTTPBody = [data vicrab_gzippedWithCompressionLevel:0 error:error];
     }
     return self;
 }
