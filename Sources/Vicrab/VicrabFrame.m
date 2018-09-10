@@ -37,7 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
     [serializedData setValue:self.columnNumber forKey:@"colno"];
     
     //liuh modify 2018-09-10
-     NSString *packageValue = [self.package stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSData *data = [self.package dataUsingEncoding:enc];
+    NSString *packageValue = [[NSString alloc] initWithData:data encoding:enc];
     [serializedData setValue:packageValue forKey:@"package"];
     
     [serializedData setValue:self.imageAddress forKey:@"image_addr"];

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Vicrab"
-  s.version      = "0.2.4"
+  s.version      = "0.2.5"
   s.summary      = "Vicrab client for cocoa"
   s.homepage     = "https://github.com/vicrab/vicrab-cocoa"
   s.license      = "MIT"

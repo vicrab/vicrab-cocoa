@@ -73,7 +73,7 @@ NSTimeInterval const VicrabRequestTimeout = 15;
 
         self.HTTPMethod = @"POST";
         [self setValue:authHeader forHTTPHeaderField:@"X-Vicrab-Auth"];
-        [self setValue:@"application/json;charset=utf8" forHTTPHeaderField:@"Content-Type"];
+        [self setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [self setValue:@"vicrab-cocoa" forHTTPHeaderField:@"User-Agent"];
         [self setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
         self.HTTPBody = [data vicrab_gzippedWithCompressionLevel:0 error:error];
