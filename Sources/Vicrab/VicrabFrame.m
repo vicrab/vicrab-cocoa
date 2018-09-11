@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
     [serializedData setValue:self.lineNumber forKey:@"lineno"];
     [serializedData setValue:self.columnNumber forKey:@"colno"];
     
-    //liuh modify 2018-09-10
+    //liuh 2018-09-10
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [self.package dataUsingEncoding:enc];
     NSString *packageValue = [[NSString alloc] initWithData:data encoding:enc];
