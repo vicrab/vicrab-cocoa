@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Sentry",
+    name: "Vicrab",
     platforms: [
         .macOS(.v10_10),
         .iOS(.v8),
@@ -11,30 +11,30 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Sentry",
-            targets: ["Sentry"]
+            name: "Vicrab",
+            targets: ["Vicrab"]
         ),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Sentry",
+            name: "Vicrab",
             dependencies: [
-                "SentryCrash/Installations",
-                "SentryCrash/Recording",
-                "SentryCrash/Recording/Monitors",
-                "SentryCrash/Recording/Tools",
-                "SentryCrash/Reporting/Filters",
-                "SentryCrash/Reporting/Filters/Tools",
-                "SentryCrash/Reporting/Tools",
+                "VicrabCrash/Installations",
+                "VicrabCrash/Recording",
+                "VicrabCrash/Recording/Monitors",
+                "VicrabCrash/Recording/Tools",
+                "VicrabCrash/Reporting/Filters",
+                "VicrabCrash/Reporting/Filters/Tools",
+                "VicrabCrash/Reporting/Tools",
             ],
-            path: "Sources/Sentry",
+            path: "Sources/Vicrab",
             cxxSettings: [
-                .headerSearchPath("../SentryCrash/Installations"),
-                .headerSearchPath("../SentryCrash/Recording"),
-                .headerSearchPath("../SentryCrash/Recording/Monitors"),
-                .headerSearchPath("../SentryCrash/Recording/Tools"),
-                .headerSearchPath("../SentryCrash/Reporting/Filters"),
+                .headerSearchPath("../VicrabCrash/Installations"),
+                .headerSearchPath("../VicrabCrash/Recording"),
+                .headerSearchPath("../VicrabCrash/Recording/Monitors"),
+                .headerSearchPath("../VicrabCrash/Recording/Tools"),
+                .headerSearchPath("../VicrabCrash/Reporting/Filters"),
             ],
             linkerSettings: [
                 .linkedLibrary("z"),
@@ -43,8 +43,8 @@ let package = Package(
         ),
 
         .target(
-            name: "SentryCrash/Installations",
-            path: "Sources/SentryCrash/Installations",
+            name: "VicrabCrash/Installations",
+            path: "Sources/VicrabCrash/Installations",
             publicHeadersPath: ".",
             cxxSettings: [
                 .headerSearchPath("../Recording"),
@@ -56,8 +56,8 @@ let package = Package(
         ),
 
         .target(
-            name: "SentryCrash/Recording",
-            path: "Sources/SentryCrash/Recording",
+            name: "VicrabCrash/Recording",
+            path: "Sources/VicrabCrash/Recording",
             exclude: [
                 "Monitors",
                 "Tools",
@@ -71,8 +71,8 @@ let package = Package(
         ),
 
         .target(
-            name: "SentryCrash/Recording/Monitors",
-            path: "Sources/SentryCrash/Recording/Monitors",
+            name: "VicrabCrash/Recording/Monitors",
+            path: "Sources/VicrabCrash/Recording/Monitors",
             publicHeadersPath: ".",
             cxxSettings: [
                 .define("GCC_ENABLE_CPP_EXCEPTIONS", to: "YES"),
@@ -83,8 +83,8 @@ let package = Package(
         ),
 
         .target(
-            name: "SentryCrash/Recording/Tools",
-            path: "Sources/SentryCrash/Recording/Tools",
+            name: "VicrabCrash/Recording/Tools",
+            path: "Sources/VicrabCrash/Recording/Tools",
             publicHeadersPath: ".",
             cxxSettings: [
                 .headerSearchPath(".."),
@@ -92,8 +92,8 @@ let package = Package(
         ),
 
         .target(
-            name: "SentryCrash/Reporting/Filters",
-            path: "Sources/SentryCrash/Reporting/Filters",
+            name: "VicrabCrash/Reporting/Filters",
+            path: "Sources/VicrabCrash/Reporting/Filters",
             exclude: [
                 "Tools",
             ],
@@ -105,36 +105,36 @@ let package = Package(
         ),
 
         .target(
-            name: "SentryCrash/Reporting/Filters/Tools",
-            path: "Sources/SentryCrash/Reporting/Filters/Tools",
+            name: "VicrabCrash/Reporting/Filters/Tools",
+            path: "Sources/VicrabCrash/Reporting/Filters/Tools",
             publicHeadersPath: "."
         ),
 
         .target(
-            name: "SentryCrash/Reporting/Tools",
-            path: "Sources/SentryCrash/Reporting/Tools",
+            name: "VicrabCrash/Reporting/Tools",
+            path: "Sources/VicrabCrash/Reporting/Tools",
             publicHeadersPath: "."
         ),
 
         .testTarget(
-            name: "SentrySwiftTests",
+            name: "VicrabSwiftTests",
             dependencies: [
-                "Sentry",
+                "Vicrab",
             ],
-            path: "Tests/SentryTests",
+            path: "Tests/VicrabTests",
             sources: [
-                "SentrySwiftTests.swift",
+                "VicrabSwiftTests.swift",
             ]
         ),
 
         // TODO: make Objective-C tests work.
         // .testTarget(
-        //     name: "SentryTests",
+        //     name: "VicrabTests",
         //     dependencies: [
-        //         "Sentry",
+        //         "Vicrab",
         //     ],
         //     exclude: [
-        //         "SentrySwiftTests.swift",
+        //         "VicrabSwiftTests.swift",
         //     ]
         // ),
     ]
