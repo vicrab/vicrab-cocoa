@@ -24,6 +24,7 @@
 
 
 #include "VicrabCrashStackCursor_Backtrace.h"
+#include "VicrabCrashCPU.h"
 
 //#define VicrabCrashLogger_LocalLevel TRACE
 #include "VicrabCrashLogger.h"
@@ -39,7 +40,7 @@ static bool advanceCursor(VicrabCrashStackCursor *cursor)
         // Bug: The system sometimes gives a backtrace with an extra 0x00000001 at the end.
         if(nextAddress > 1)
         {
-            cursor->stackEntry.address = context->backtrace[currentIndex];
+            cursor->stackEntry.address = vicrabcrashcpu_normaliseInstructionPointer(nextAddress);
             cursor->state.currentDepth++;
             return true;
         }

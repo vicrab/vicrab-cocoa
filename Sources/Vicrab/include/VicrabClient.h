@@ -57,6 +57,21 @@ NS_SWIFT_NAME(Client)
 @property(nonatomic, strong) NSDictionary<NSString *, id> *_Nullable extra;
 
 /**
+ * This property will be filled before the event is sent.
+ */
+@property(nonatomic, copy) NSString *_Nullable releaseName;
+
+/**
+ * This property will be filled before the event is sent.
+ */
+@property(nonatomic, copy) NSString *_Nullable dist;
+
+/**
+ * The environment used for this event
+ */
+@property(nonatomic, copy) NSString *_Nullable environment;
+    
+/**
  * This will be filled on every startup with a dictionary with extra, tags, user which will be used
  * when sending the crashreport
  */
@@ -68,9 +83,14 @@ NS_SWIFT_NAME(Client)
 @property(nonatomic, strong) VicrabEvent *_Nullable lastEvent;
 
 /**
- * Contains the last successfully sent event
+ * Contains the breadcrumbs which will be sent with the event
  */
 @property(nonatomic, strong) VicrabBreadcrumbStore *breadcrumbs;
+    
+/**
+ * Is the client enabled?. Default is @YES, if set @NO sending of events will be prevented.
+ */
+@property(nonatomic, copy) NSNumber *enabled;
 
 /**
  * This block can be used to modify the event before it will be serialized and sent
@@ -110,6 +130,16 @@ NS_SWIFT_NAME(Client)
 @property(nonatomic, copy) VicrabShouldQueueEvent _Nullable shouldQueueEvent;
 
 /**
+ * Increase the max number of events we store offline.
+ * Be careful with this setting since too high numbers may cause your quota to exceed.
+ */
+@property(nonatomic, assign) NSUInteger maxEvents;
+/**
+ * Increase the max number of breadcrumbs we store offline.
+ */
+@property(nonatomic, assign) NSUInteger maxBreadcrumbs;
+
+/**
  * Initializes a VicrabClient. Pass your private DSN string.
  *
  * @param dsn DSN string of vicrab
@@ -118,11 +148,26 @@ NS_SWIFT_NAME(Client)
  */
 - (_Nullable instancetype)initWithDsn:(NSString *)dsn
                      didFailWithError:(NSError *_Nullable *_Nullable)error;
+    
+/**
+ * Initializes a VicrabClient. Pass in an dictionary of options.
+ *
+ * @param options Options dictionary
+ * @param error NSError reference object
+ * @return VicrabClient
+ */
+- (_Nullable instancetype)initWithOptions:(NSDictionary<NSString *, id> *)options
+                         didFailWithError:(NSError *_Nullable *_Nullable)error;
 
 /**
  * This automatically adds breadcrumbs for different user actions.
  */
 - (void)enableAutomaticBreadcrumbTracking;
+
+/**
+ * Track memory pressure notification on UIApplications and send an event for it to Vicrab.
+ */
+- (void)trackMemoryPressureAsEvent;
 
 /**
  * Sends and event to vicrab. Internally calls @selector(sendEvent:useClientProperties:withCompletionHandler:) with
@@ -134,14 +179,14 @@ NS_SWIFT_NAME(Client)
 NS_SWIFT_NAME(send(event:completion:));
 
 /**
- * This function stores an event to disk. It will be send with the next batch.
+ * This function stores an event to disk. It will be sent with the next batch.
  * This function is mainly used for react native.
  * @param event VicrabEvent that should be sent
  */
 - (void)storeEvent:(VicrabEvent *)event;
 
 /**
- * Clears all context related variables tags, extra and user
+ * Clears all context related variables: tags, extra and user
  */
 - (void)clearContext;
 

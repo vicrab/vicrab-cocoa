@@ -59,6 +59,8 @@
                 reportConverter.userContext = VicrabClient.sharedClient.lastContext;
                 VicrabEvent *event = [reportConverter convertReportToEvent];
                 [self handleConvertedEvent:event report:report sentReports:sentReports];
+            } else {
+                [VicrabLog logWithMessage:@"Crash reports were found but no VicrabClient.sharedClient is set. Cannot send crash reports to Vicrab. This is probably a misconfiguration, make sure you set VicrabClient.sharedClient before calling startCrashHandlerWithError:." andLevel:kVicrabLogLevelError];
             }
         }
         if (onCompletion) {

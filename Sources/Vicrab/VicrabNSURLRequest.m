@@ -14,7 +14,7 @@
 #import <Vicrab/VicrabEvent.h>
 #import <Vicrab/VicrabError.h>
 #import <Vicrab/VicrabLog.h>
-#import <Vicrab/NSData+Compression.h>
+#import <Vicrab/NSData+VicrabCompression.h>
 
 #else
 #import "VicrabDsn.h"
@@ -23,7 +23,7 @@
 #import "VicrabEvent.h"
 #import "VicrabError.h"
 #import "VicrabLog.h"
-#import "NSData+Compression.h"
+#import "NSData+VicrabCompression.h"
 
 #endif
 
@@ -43,17 +43,24 @@ NSTimeInterval const VicrabRequestTimeout = 15;
 - (_Nullable instancetype)initStoreRequestWithDsn:(VicrabDsn *)dsn
                                          andEvent:(VicrabEvent *)event
                                  didFailWithError:(NSError *_Nullable *_Nullable)error {
-    NSDictionary *serialized = [event serialize];
-    if (![NSJSONSerialization isValidJSONObject:serialized]) {
-        if (error) {
-            *error = NSErrorFromVicrabError(kVicrabErrorJsonConversionError, @"Event cannot be converted to JSON");
+    NSData *jsonData;
+    if (nil != event.json) {
+        // If we have event.json, this has been set from JS and should be sent directly
+        jsonData = event.json;
+        [VicrabLog logWithMessage:@"Using event->json attribute instead of serializing event" andLevel:kVicrabLogLevelVerbose];
+    } else {
+        NSDictionary *serialized = [event serialize];
+        if (![NSJSONSerialization isValidJSONObject:serialized]) {
+            if (error) {
+                *error = NSErrorFromVicrabError(kVicrabErrorJsonConversionError, @"Event cannot be converted to JSON");
+            }
+            return nil;
         }
-        return nil;
+        
+        jsonData = [NSJSONSerialization dataWithJSONObject:serialized
+                                                           options:VicrabClient.logLevel == kVicrabLogLevelVerbose ? NSJSONWritingPrettyPrinted : 0
+                                                             error:error];
     }
-
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:serialized
-                                                       options:VicrabClient.logLevel == kVicrabLogLevelVerbose ? NSJSONWritingPrettyPrinted : 0
-                                                         error:error];
     
     if (VicrabClient.logLevel == kVicrabLogLevelVerbose) {
         [VicrabLog logWithMessage:@"Sending JSON -------------------------------" andLevel:kVicrabLogLevelVerbose];
@@ -73,10 +80,10 @@ NSTimeInterval const VicrabRequestTimeout = 15;
 
         self.HTTPMethod = @"POST";
         [self setValue:authHeader forHTTPHeaderField:@"X-Vicrab-Auth"];
-        [self setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [self setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [self setValue:@"vicrab-cocoa" forHTTPHeaderField:@"User-Agent"];
         [self setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
-        self.HTTPBody = [data vicrab_gzippedWithCompressionLevel:0 error:error];
+        self.HTTPBody = [data vicrab_gzippedWithCompressionLevel:-1 error:error];
     }
     return self;
 }

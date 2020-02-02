@@ -32,7 +32,7 @@
 #import "VicrabCrashReportFields.h"
 #import "VicrabCrashMonitor_AppState.h"
 #import "VicrabCrashJSONCodecObjC.h"
-#import "NSError+SimpleConstructor.h"
+#import "NSError+VicrabSimpleConstructor.h"
 #import "VicrabCrashMonitorContext.h"
 #import "VicrabCrashMonitor_System.h"
 #import "VicrabCrashSystemCapabilities.h"
@@ -523,19 +523,20 @@ SYNTHESIZE_CRASH_STATE_PROPERTY(BOOL, crashedLastLaunch)
 
 - (NSArray*) allReports
 {
+    NSMutableArray* reports = [NSMutableArray array];
     int reportCount = vicrabcrash_getReportCount();
-    int64_t reportIDs[reportCount];
-    reportCount = vicrabcrash_getReportIDs(reportIDs, reportCount);
-    NSMutableArray* reports = [NSMutableArray arrayWithCapacity:(NSUInteger)reportCount];
-    for(int i = 0; i < reportCount; i++)
-    {
-        NSDictionary* report = [self reportWithIntID:reportIDs[i]];
-        if(report != nil)
+    if (reportCount > 0) {
+        int64_t reportIDs[reportCount];
+        reportCount = vicrabcrash_getReportIDs(reportIDs, reportCount);
+        for(int i = 0; i < reportCount; i++)
         {
-            [reports addObject:report];
+            NSDictionary* report = [self reportWithIntID:reportIDs[i]];
+            if(report != nil)
+            {
+                [reports addObject:report];
+            }
         }
     }
-
     return reports;
 }
 

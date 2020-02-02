@@ -143,6 +143,14 @@ int vicrabcrashcpu_stackGrowDirection(void);
  */
 void vicrabcrashcpu_getState(struct VicrabCrashMachineContext* destinationContext);
 
+/** Strip PAC from an instruction pointer.
+ *
+ * @param ip PAC encoded instruction pointer.
+ *
+ * @return Instruction pointer without PAC.
+ */
+uintptr_t vicrabcrashcpu_normaliseInstructionPointer(uintptr_t ip);
+    
 #ifdef __cplusplus
 }
 #endif

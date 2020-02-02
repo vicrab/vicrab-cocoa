@@ -128,6 +128,11 @@ static const char* stringSysctl(const char* name)
     }
 
     char* value = malloc((size_t)size);
+    if(value == NULL)
+    {
+        return NULL;
+    }
+
     if(vicrabcrashsysctl_stringForName(name, value, size) <= 0)
     {
         free(value);
@@ -140,7 +145,10 @@ static const char* stringSysctl(const char* name)
 static const char* dateString(time_t date)
 {
     char* buffer = malloc(21);
-    vicrabcrashdate_utcStringFromTimestamp(date, buffer);
+    if(buffer != NULL)
+    {
+        vicrabcrashdate_utcStringFromTimestamp(date, buffer);
+    }
     return buffer;
 }
 

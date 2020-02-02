@@ -16,8 +16,8 @@
 #import <Vicrab/VicrabStacktrace.h>
 #import <Vicrab/VicrabContext.h>
 #import <Vicrab/VicrabDebugMeta.h>
-#import <Vicrab/NSDate+Extras.h>
-#import <Vicrab/NSDictionary+Sanitize.h>
+#import <Vicrab/NSDate+VicrabExtras.h>
+#import <Vicrab/NSDictionary+VicrabSanitize.h>
 
 #else
 #import "VicrabEvent.h"
@@ -28,8 +28,8 @@
 #import "VicrabException.h"
 #import "VicrabStacktrace.h"
 #import "VicrabContext.h"
-#import "NSDate+Extras.h"
-#import "NSDictionary+Sanitize.h"
+#import "NSDate+VicrabExtras.h"
+#import "NSDictionary+VicrabSanitize.h"
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -39,9 +39,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithLevel:(enum VicrabSeverity)level {
     self = [super init];
     if (self) {
-        self.eventId = [[NSUUID UUID].UUIDString stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        self.eventId = [[[NSUUID UUID].UUIDString stringByReplacingOccurrencesOfString:@"-" withString:@""] lowercaseString];
         self.level = level;
         self.platform = @"cocoa";
+    }
+    return self;
+}
+
+- (instancetype)initWithJSON:(NSData *)json {
+    self = [self initWithLevel:kVicrabSeverityInfo];
+    if (self) {
+        self.json = json;
     }
     return self;
 }
@@ -92,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addExceptions:(NSMutableDictionary *)serializedData {
     NSMutableArray *exceptions = [NSMutableArray new];
-    for (VicrabThread *exception in self.exceptions) {
+    for (VicrabException *exception in self.exceptions) {
         [exceptions addObject:[exception serialize]];
     }
     if (exceptions.count > 0) {
@@ -155,6 +163,16 @@ NS_ASSUME_NONNULL_BEGIN
     [serializedData setValue:self.message forKey:@"message"];
     [serializedData setValue:self.logger forKey:@"logger"];
     [serializedData setValue:self.serverName forKey:@"server_name"];
+    [serializedData setValue:self.type forKey:@"type"];
+    if (nil != self.type && [self.type isEqualToString:@"transaction"]) {
+        if (nil != self.startTimestamp) {
+            [serializedData setValue:[self.startTimestamp vicrab_toIso8601String] forKey:@"start_timestamp"];
+        } else {
+            // start timestamp should never be empty
+            [serializedData setValue:[self.timestamp vicrab_toIso8601String] forKey:@"start_timestamp"];
+        }
+        
+    }
 }
 
 @end

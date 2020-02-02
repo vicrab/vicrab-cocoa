@@ -26,8 +26,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSInteger const maxEvents = 10;
-NSInteger const maxBreadcrumbs = 200;
+NSInteger const defaultMaxEvents = 10;
+NSInteger const defaultMaxBreadcrumbs = 200;
 
 @interface VicrabFileManager ()
 
@@ -64,6 +64,8 @@ NSInteger const maxBreadcrumbs = 200;
         }
 
         self.currentFileCounter = 0;
+        self.maxEvents = defaultMaxEvents;
+        self.maxBreadcrumbs = defaultMaxBreadcrumbs;
     }
     return self;
 }
@@ -142,42 +144,52 @@ NSInteger const maxBreadcrumbs = 200;
 }
 
 - (NSString *)storeEvent:(VicrabEvent *)event {
-    return [self storeEvent:event maxCount:maxEvents];
+    return [self storeEvent:event maxCount:self.maxEvents];
 }
 
 - (NSString *)storeEvent:(VicrabEvent *)event maxCount:(NSUInteger)maxCount {
     @synchronized (self) {
-        NSString *result = [self storeDictionary:[event serialize] toPath:self.eventsPath];
-        [self handleFileManagerLimit:self.eventsPath maxCount:MIN(maxCount, maxEvents)];
+        NSString *result;
+        if (nil != event.json) {
+            result = [self storeData:event.json toPath:self.eventsPath];
+        } else {
+            result = [self storeDictionary:[event serialize] toPath:self.eventsPath];
+        }
+        [self handleFileManagerLimit:self.eventsPath maxCount:maxCount];
         return result;
     }
 }
 
 - (NSString *)storeBreadcrumb:(VicrabBreadcrumb *)crumb {
-    return [self storeBreadcrumb:crumb maxCount:maxBreadcrumbs];
+    return [self storeBreadcrumb:crumb maxCount:self.maxBreadcrumbs];
 }
 
 - (NSString *)storeBreadcrumb:(VicrabBreadcrumb *)crumb maxCount:(NSUInteger)maxCount {
     @synchronized (self) {
         NSString *result = [self storeDictionary:[crumb serialize] toPath:self.breadcrumbsPath];
-        [self handleFileManagerLimit:self.breadcrumbsPath maxCount:MIN(maxCount, maxBreadcrumbs)];
+        [self handleFileManagerLimit:self.breadcrumbsPath maxCount:MIN(maxCount, self.maxBreadcrumbs)];
         return result;
     }
 }
 
-- (NSString *)storeDictionary:(NSDictionary *)dictionary toPath:(NSString *)path {
+- (NSString *)storeData:(NSData *)data toPath:(NSString *)path {
     @synchronized (self) {
         NSString *finalPath = [path stringByAppendingPathComponent:[self uniqueAcendingJsonName]];
         [VicrabLog logWithMessage:[NSString stringWithFormat:@"Writing to file: %@", finalPath] andLevel:kVicrabLogLevelDebug];
-        if ([NSJSONSerialization isValidJSONObject:dictionary]) {
-            NSData *saveData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
-            [saveData writeToFile:finalPath options:NSDataWritingAtomic error:nil];
-        } else {
-            [VicrabLog logWithMessage:[NSString stringWithFormat:@"Invalid JSON, failed to write file %@", finalPath]
-                             andLevel:kVicrabLogLevelError];
-        }
+        [data writeToFile:finalPath options:NSDataWritingAtomic error:nil];
         return finalPath;
     }
+}
+
+- (NSString *)storeDictionary:(NSDictionary *)dictionary toPath:(NSString *)path {
+    if ([NSJSONSerialization isValidJSONObject:dictionary]) {
+        NSData *saveData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
+        return [self storeData:saveData toPath:path];
+    } else {
+        [VicrabLog logWithMessage:[NSString stringWithFormat:@"Invalid JSON, failed to write file %@", path]
+                         andLevel:kVicrabLogLevelError];
+    }
+    return path;
 }
 
 - (void)handleFileManagerLimit:(NSString *)path maxCount:(NSUInteger)maxCount {

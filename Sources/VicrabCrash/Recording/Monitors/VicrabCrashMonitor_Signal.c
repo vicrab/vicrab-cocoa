@@ -129,6 +129,12 @@ static bool installSignalHandler()
         VicrabCrashLOG_DEBUG("Allocating signal stack area.");
         g_signalStack.ss_size = SIGSTKSZ;
         g_signalStack.ss_sp = malloc(g_signalStack.ss_size);
+
+        if(g_signalStack.ss_sp == NULL)
+        {
+            VicrabCrashLOG_ERROR("Failed to allocate signal stack area of size %ul", g_signalStack.ss_size);
+            goto failed;
+        }
     }
 
     VicrabCrashLOG_DEBUG("Setting signal stack area.");

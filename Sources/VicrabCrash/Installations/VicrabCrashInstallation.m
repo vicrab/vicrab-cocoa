@@ -32,7 +32,7 @@
 #import "VicrabCrashCString.h"
 #import "VicrabCrashJSONCodecObjC.h"
 #import "VicrabCrashLogger.h"
-#import "NSError+SimpleConstructor.h"
+#import "NSError+VicrabSimpleConstructor.h"
 #import <objc/runtime.h>
 
 

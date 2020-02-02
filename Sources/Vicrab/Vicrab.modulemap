@@ -1,30 +1,31 @@
-framework module Vicrab {
-    umbrella header "Vicrab.h"
+framework module Sentry {
+    umbrella header "Sentry.h"
 
     export *
     module * { export * }
 
     explicit module Private {
-        header "VicrabDsn.h"
-        header "VicrabClient+Internal.h"
-        header "VicrabError.h"
-        header "VicrabAsynchronousOperation.h"
-        header "VicrabRequestOperation.h"
-        header "VicrabQueueableRequestManager.h"
-        header "VicrabInstallation.h"
-        header "VicrabCrashReportSink.h"
-        header "VicrabCrashReportConverter.h"
-        header "VicrabLog.h"
-        header "VicrabBreadcrumbTracker.h"
-        header "VicrabCrashExceptionApplication.h"
+        header "SentryDsn.h"
+        header "SentryClient+Internal.h"
+        header "SentryError.h"
+        header "SentryAsynchronousOperation.h"
+        header "SentryRequestOperation.h"
+        header "SentryQueueableRequestManager.h"
+        header "SentryInstallation.h"
+        header "SentryCrashReportSink.h"
+        header "SentryCrashReportConverter.h"
+        header "SentryLog.h"
+        header "SentryBreadcrumbTracker.h"
+        header "SentryCrashExceptionApplication.h"
 
-        header "NSData+Compression.h"
-        header "NSDate+Extras.h"
-        header "NSDictionary+Sanitize.h"
+        header "NSString+SentryNSUIntegerValue.h"
+        header "NSData+SentryCompression.h"
+        header "NSDate+SentryExtras.h"
+        header "NSDictionary+SentrySanitize.h"
 
-        header "VicrabCrashInstallation+Private.h"
-        header "VicrabCrashReportWriter.h"
-        header "VicrabCrashReportFilter.h"
-        header "VicrabCrashMonitorType.h"
+        header "SentryCrashInstallation+Private.h"
+        header "SentryCrashReportWriter.h"
+        header "SentryCrashReportFilter.h"
+        header "SentryCrashMonitorType.h"
     }
 }

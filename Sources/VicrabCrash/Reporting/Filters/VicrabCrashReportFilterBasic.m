@@ -26,8 +26,8 @@
 
 
 #import "VicrabCrashReportFilterBasic.h"
-#import "NSError+SimpleConstructor.h"
-#import "Container+DeepSearch.h"
+#import "NSError+VicrabSimpleConstructor.h"
+#import "Container+VicrabDeepSearch.h"
 #import "VicrabCrashVarArgs.h"
 
 //#define VicrabCrashLogger_LocalLevel TRACE

@@ -28,7 +28,7 @@
 #import "VicrabCrashJSONCodecObjC.h"
 
 #import "VicrabCrashJSONCodec.h"
-#import "NSError+SimpleConstructor.h"
+#import "NSError+VicrabSimpleConstructor.h"
 #import "VicrabCrashDate.h"
 
 

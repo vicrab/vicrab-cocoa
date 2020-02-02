@@ -24,7 +24,6 @@ VICRAB_NO_INIT
 - (_Nullable instancetype)initWithDsn:(VicrabDsn *)dsn didFailWithError:(NSError **)error;
 
 - (NSString *)storeEvent:(VicrabEvent *)event;
-- (NSString *)storeEvent:(VicrabEvent *)event maxCount:(NSUInteger)maxCount;
 
 - (NSString *)storeBreadcrumb:(VicrabBreadcrumb *)crumb;
 - (NSString *)storeBreadcrumb:(VicrabBreadcrumb *)crumb maxCount:(NSUInteger)maxCount;
@@ -46,6 +45,9 @@ VICRAB_NO_INIT
 - (NSArray<NSString *> *)allFilesInFolder:(NSString *)path;
 
 - (NSString *)storeDictionary:(NSDictionary *)dictionary toPath:(NSString *)path;
+
+@property(nonatomic, assign) NSUInteger maxEvents;
+@property(nonatomic, assign) NSUInteger maxBreadcrumbs;
 
 @end
 

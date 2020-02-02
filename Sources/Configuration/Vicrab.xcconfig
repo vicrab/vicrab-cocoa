@@ -18,9 +18,9 @@ MACH_O_TYPE = mh_dylib
 FRAMEWORK_VERSION = A
 
 PRODUCT_NAME = Vicrab
-CURRENT_PROJECT_VERSION = 4.0.1
+CURRENT_PROJECT_VERSION = 4.4.3
 INFOPLIST_FILE = Sources/Vicrab/Info.plist
-PRODUCT_BUNDLE_IDENTIFIER = io.Vicrab.Vicrab
+PRODUCT_BUNDLE_IDENTIFIER = io.vicrab.Vicrab
 ALWAYS_SEARCH_USER_PATHS = NO
 CLANG_ENABLE_OBJC_ARC = YES
 CLANG_ENABLE_MODULES = YES
@@ -45,4 +45,4 @@ MODULEMAP_FILE = $(SRCROOT)/Sources/Vicrab/Vicrab.modulemap
 
 // SWIFT_VERSION is only recognized by Xcode 8 and higher.
 // Prior versions of Xcode support only one Swift version.
-//SWIFT_VERSION = 3.1
+// SWIFT_VERSION = 3.1

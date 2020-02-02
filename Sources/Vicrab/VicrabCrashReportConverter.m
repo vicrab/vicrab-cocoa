@@ -18,7 +18,7 @@
 #import <Vicrab/VicrabContext.h>
 #import <Vicrab/VicrabUser.h>
 #import <Vicrab/VicrabMechanism.h>
-#import <Vicrab/NSDate+Extras.h>
+#import <Vicrab/NSDate+VicrabExtras.h>
 
 #else
 #import "VicrabCrashReportConverter.h"
@@ -31,7 +31,7 @@
 #import "VicrabContext.h"
 #import "VicrabUser.h"
 #import "VicrabMechanism.h"
-#import "NSDate+Extras.h"
+#import "NSDate+VicrabExtras.h"
 #endif
 
 @interface VicrabCrashReportConverter ()
@@ -92,11 +92,18 @@ static inline NSString *hexAddress(NSNumber *value) {
     event.threads = [self convertThreads];
     event.exceptions = [self convertExceptions];
     event.context = [self convertContext];
+    
+    event.releaseName = self.userContext[@"releaseName"];
+    event.dist = self.userContext[@"dist"];
+    event.environment = self.userContext[@"environment"];
+    
     // We want to set the release and dist to the version from the crash report itself
     // otherwise it can happend that we have two different version when the app crashes
     // right before an app update #218 #219
-    if (event.context.appContext[@"app_identifier"] && event.context.appContext[@"app_version"] && event.context.appContext[@"app_build"]) {
+    if (nil == event.releaseName && event.context.appContext[@"app_identifier"] && event.context.appContext[@"app_version"]) {
         event.releaseName = [NSString stringWithFormat:@"%@-%@", event.context.appContext[@"app_identifier"], event.context.appContext[@"app_version"]];
+    }
+    if (nil == event.dist && event.context.appContext[@"app_build"]) {
         event.dist = event.context.appContext[@"app_build"];
     }
     event.extra = [self convertExtra];
@@ -296,8 +303,7 @@ static inline NSString *hexAddress(NSNumber *value) {
     NSString *exceptionType = self.exceptionContext[@"type"];
     VicrabException *exception = [[VicrabException alloc] initWithValue:@"Unknown Exception" type:@"Unknown Exception"];
     if ([exceptionType isEqualToString:@"nsexception"]) {
-        exception = [[VicrabException alloc] initWithValue:self.exceptionContext[@"nsexception"][@"reason"]
-                                                      type:self.exceptionContext[@"nsexception"][@"name"]];
+        exception = [self parseNSException];
     } else if ([exceptionType isEqualToString:@"cpp_exception"]) {
         exception = [[VicrabException alloc] initWithValue:self.exceptionContext[@"cpp_exception"][@"name"]
                                                       type:@"C++ Exception"];
@@ -327,10 +333,30 @@ static inline NSString *hexAddress(NSNumber *value) {
     [self enhanceValueFromNotableAddresses:exception];
     exception.mechanism = [self extractMechanism];
     exception.thread = [self crashedThread];
-    if (nil != self.diagnosis && self.diagnosis.length > 0) {
+    if (nil != self.diagnosis && self.diagnosis.length > 0 && ![self.diagnosis containsString:exception.value]) {
         exception.value = [exception.value stringByAppendingString:[NSString stringWithFormat:@" >\n%@", self.diagnosis]];
     }
     return @[exception];
+}
+
+- (VicrabException *)parseNSException {
+//    if ([self.exceptionContext[@"nsexception"][@"name"] containsString:@"NativeScript encountered a fatal error:"]) {
+//        // TODO parsing here
+//        VicrabException *exception = [[VicrabException alloc] initWithValue:self.exceptionContext[@"nsexception"][@"reason"]
+//                                                                       type:self.exceptionContext[@"nsexception"][@"name"]];
+//        // exception.thread set here with parsed js stacktrace
+//
+//        return exception;
+//    }
+    NSString *reason = @"";
+    if (nil != self.exceptionContext[@"nsexception"][@"reason"]) {
+        reason = self.exceptionContext[@"nsexception"][@"reason"];
+    } else if (nil != self.exceptionContext[@"reason"]) {
+        reason = self.exceptionContext[@"reason"];
+    }
+    
+    return [[VicrabException alloc] initWithValue:[NSString stringWithFormat:@"%@", reason]
+                                             type:self.exceptionContext[@"nsexception"][@"name"]];
 }
 
 - (void)enhanceValueFromNotableAddresses:(VicrabException *)exception {

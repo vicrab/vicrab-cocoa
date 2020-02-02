@@ -9,13 +9,13 @@
 #if __has_include(<Vicrab/Vicrab.h>)
 
 #import <Vicrab/VicrabBreadcrumb.h>
-#import <Vicrab/NSDate+Extras.h>
-#import <Vicrab/NSDictionary+Sanitize.h>
+#import <Vicrab/NSDate+VicrabExtras.h>
+#import <Vicrab/NSDictionary+VicrabSanitize.h>
 
 #else
 #import "VicrabBreadcrumb.h"
-#import "NSDate+Extras.h"
-#import "NSDictionary+Sanitize.h"
+#import "NSDate+VicrabExtras.h"
+#import "NSDictionary+VicrabSanitize.h"
 #endif
 
 

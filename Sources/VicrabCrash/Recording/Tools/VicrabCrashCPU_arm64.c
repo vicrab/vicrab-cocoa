@@ -36,6 +36,7 @@
 //#define VicrabCrashLogger_LocalLevel TRACE
 #include "VicrabCrashLogger.h"
 
+#define KSPACStrippingMask_ARM64e 0x0000000fffffffff
 
 static const char* g_registerNames[] =
 {
@@ -161,5 +162,9 @@ int vicrabcrashcpu_stackGrowDirection(void)
     return -1;
 }
 
+uintptr_t vicrabcrashcpu_normaliseInstructionPointer(uintptr_t ip)
+{
+    return ip & KSPACStrippingMask_ARM64e;
+}
 
 #endif

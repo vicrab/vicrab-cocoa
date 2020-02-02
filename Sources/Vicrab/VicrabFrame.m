@@ -35,13 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
     [serializedData setValue:self.module forKey:@"module"];
     [serializedData setValue:self.lineNumber forKey:@"lineno"];
     [serializedData setValue:self.columnNumber forKey:@"colno"];
-    
-    //liuh 2018-09-10
-    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(NSUTF8StringEncoding);
-    NSData *data = [self.package dataUsingEncoding:enc];
-    NSString *packageValue = [[NSString alloc] initWithData:data encoding:enc];
-    [serializedData setValue:packageValue forKey:@"package"];
-    
+    [serializedData setValue:self.package forKey:@"package"];
     [serializedData setValue:self.imageAddress forKey:@"image_addr"];
     [serializedData setValue:self.instructionAddress forKey:@"instruction_addr"];
     [serializedData setValue:self.platform forKey:@"platform"];

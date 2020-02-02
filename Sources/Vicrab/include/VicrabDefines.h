@@ -15,7 +15,7 @@
 #endif
 
 #if TARGET_OS_IOS || TARGET_OS_TV
-#define VICRABY_HAS_UIDEVICE 1
+#define VICRAB_HAS_UIDEVICE 1
 #else
 #define VICRAB_HAS_UIDEVICE 0
 #endif

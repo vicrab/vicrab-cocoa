@@ -9,11 +9,11 @@
 #if __has_include(<Vicrab/Vicrab.h>)
 
 #import <Vicrab/VicrabUser.h>
-#import <Vicrab/NSDictionary+Sanitize.h>
+#import <Vicrab/NSDictionary+VicrabSanitize.h>
 
 #else
 #import "VicrabUser.h"
-#import "NSDictionary+Sanitize.h"
+#import "NSDictionary+VicrabSanitize.h"
 #endif
 
 NS_ASSUME_NONNULL_BEGIN

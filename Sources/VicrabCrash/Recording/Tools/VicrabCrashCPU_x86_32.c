@@ -184,4 +184,9 @@ int vicrabcrashcpu_stackGrowDirection(void)
     return -1;
 }
 
+uintptr_t vicrabcrashcpu_normaliseInstructionPointer(uintptr_t ip)
+{
+    return ip;
+}
+
 #endif

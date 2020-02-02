@@ -249,9 +249,20 @@ char* vicrabcrashcrf_fixupCrashReport(const char* crashReport)
     };
     int stringBufferLength = 10000;
     char* stringBuffer = malloc((unsigned)stringBufferLength);
+    if(stringBuffer == NULL)
+    {
+        VicrabCrashLOG_ERROR("Failed to allocate string buffer of size %ul", stringBufferLength);
+        return NULL;
+    }
     int crashReportLength = (int)strlen(crashReport);
     int fixedReportLength = (int)(crashReportLength * 1.5);
     char* fixedReport = malloc((unsigned)fixedReportLength);
+    if(fixedReport == NULL)
+    {
+        free(stringBuffer);
+        VicrabCrashLOG_ERROR("Failed to allocate fixed report buffer of size %ld", fixedReportLength);
+        return NULL;
+    }
     VicrabCrashJSONEncodeContext encodeContext;
     FixupContext fixupContext =
     {

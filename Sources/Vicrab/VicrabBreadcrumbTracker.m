@@ -35,8 +35,23 @@
     [self addEnabledCrumb];
     [self swizzleSendAction];
     [self swizzleViewDidAppear];
+    [self trackApplicationUIKitNotifications];
 }
 
+- (void)trackApplicationUIKitNotifications {
+#if VICRAB_HAS_UIKIT
+    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidReceiveMemoryWarningNotification
+                                                    object:nil
+                                                     queue:nil
+                                                usingBlock:^(NSNotification *notification) {
+                                                    VicrabBreadcrumb *crumb = [[VicrabBreadcrumb alloc] initWithLevel:kVicrabSeverityWarning category:@"Device"];
+                                                    crumb.type = @"system";
+                                                    crumb.message = @"Memory Warning";
+                                                    [VicrabClient.sharedClient.breadcrumbs addBreadcrumb:crumb];
+                                                }];
+#endif
+}
+     
 - (void)addEnabledCrumb {
     if (nil != VicrabClient.sharedClient) {
         VicrabBreadcrumb *crumb = [[VicrabBreadcrumb alloc] initWithLevel:kVicrabSeverityInfo category:@"started"];
