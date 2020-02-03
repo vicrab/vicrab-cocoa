@@ -67,7 +67,7 @@
 		636085161ED48BBA00E8599E /* VicrabFileManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 636085151ED48BBA00E8599E /* VicrabFileManagerTests.m */; };
 		63717D63226746A000C37CAE /* VicrabNSUIntegerValueTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63717D62226746A000C37CAE /* VicrabNSUIntegerValueTest.m */; };
 		637533582243A0100002F77F /* NSString+VicrabNSUIntegerValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 637533562243A0100002F77F /* NSString+VicrabNSUIntegerValue.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		637533592243A0100002F77F /* NSString+VicrabNSUIntegerValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 637533572243A0100002F77F /* NSString+VicrabNSUIntegerValue.m */; };
+		637533592243A0100002F77F /* NSString+VicrabNSUIntegerValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 637533572243A0100002F77F /* NSString+VicrabNSUIntegerValue.m */; settings = {COMPILER_FLAGS = "-Wshorten-64-to-32"; }; };
 		637EE56E1F9E42E20029E321 /* VicrabJavaScriptBridgeHelper.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 63B225BF1F9E1DAF008C1A94 /* VicrabJavaScriptBridgeHelper.h */; };
 		6387B7FB1ED850000045A84C /* VicrabInstallation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6344DDAF1EC308E400D9160D /* VicrabInstallation.m */; };
 		6387B7FC1ED850020045A84C /* VicrabCrashReportSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 6344DDB31EC309E000D9160D /* VicrabCrashReportSink.m */; };
