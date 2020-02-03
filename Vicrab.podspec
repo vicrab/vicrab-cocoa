@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = "Vicrab"
   s.version      = "0.3.3"
   s.summary      = "Vicrab client for cocoa"
-  s.homepage     = "https://github.com/vicrab/vicrab-cocoa"
+  s.homepage     = "https://www.vicrab.com"
   s.license      = "MIT"
   s.author       = { "Vicrab" => "developer@vicrab.com" }
   s.authors      = "Vicrab"
