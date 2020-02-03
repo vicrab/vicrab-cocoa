@@ -19,7 +19,10 @@
 @implementation NSString (VicrabNSUIntegerValue)
 
 - (NSUInteger)unsignedLongLongValue {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wshorten-64-to-32"
     return strtoull([self UTF8String], NULL, 0);
+#pragma clang diagnostic pop
 }
 
 @end
