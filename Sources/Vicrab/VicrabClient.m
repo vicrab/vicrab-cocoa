@@ -47,7 +47,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString *const VicrabClientVersionString = @"0.4.0";
+NSString *const VicrabClientVersionString = @"0.4.1";//配置vicrab_secret值
 NSString *const VicrabClientSdkName = @"vicrab-cocoa";
 
 static VicrabClient *sharedClient = nil;

@@ -119,10 +119,15 @@ static NSString *newAuthHeader(NSURL *url) {
     [string appendFormat:@"%@,", newHeaderPart(@"vicrab_version", VicrabServerVersionString)];
     [string appendFormat:@"%@,", newHeaderPart(@"vicrab_client", [NSString stringWithFormat:@"vicrab-cocoa/%@", VicrabClient.versionString])];
     [string appendFormat:@"%@,", newHeaderPart(@"vicrab_timestamp", @((NSInteger) [[NSDate date] timeIntervalSince1970]))];
-    [string appendFormat:@"%@", newHeaderPart(@"vicrab_key", url.user)];
-    if (nil != url.password) {
-        [string appendFormat:@",%@", newHeaderPart(@"vicrab_secret", url.password)];
-    }
+    [string appendFormat:@"%@", newHeaderPart(@"vicrab_secret", url.user)];
+//    if (nil != url.password) {
+//        [string appendFormat:@",%@", newHeaderPart(@"vicrab_secret", url.password)];
+//    }
+     //2020-02-17 去屏闭代码
+//    [string appendFormat:@"%@", newHeaderPart(@"vicrab_key", url.user)];
+//    if (nil != url.password) {
+//        [string appendFormat:@",%@", newHeaderPart(@"vicrab_secret", url.password)];
+//    }
     return string;
 }
 
